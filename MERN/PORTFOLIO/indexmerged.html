@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swaranthi B | Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* === BASE STYLES === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Fira Code', monospace;
+      background: linear-gradient(to bottom right, #0a0a0a, #000);
+      color: #00faff;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background blur dev SVG */
+    body::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 250, 255, 0.1) 0%, transparent 70%);
+      filter: blur(80px);
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .navbar a {
+      color: #00faff;
+      text-decoration: none;
+      font-size: 1rem;
+      position: relative;
+    }
+
+    .navbar a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #00faff;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8rem 5vw 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .terminal {
+      max-width: 60%;
+      z-index: 1;
+    }
+
+    .terminal p {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .name {
+      color: #00e0ff;
+      font-weight: bold;
+    }
+
+    .resume-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      border: 2px solid #00faff;
+      color: #00faff;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+
+    .resume-btn:hover {
+      background: #00faff;
+      color: #000;
+      box-shadow: 0 0 5px #00faff;
+    }
+
+    .hero-photo {
+      max-width: 35%;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      max-width: 350px;
+      border: 2px solid #00faff;
+      box-shadow: 0 0 15px #00faff;
+      transition: transform 0.3s;
+      clip-path: circle(50% at 50% 50%);
+    }
+
+    .hero-photo img:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* SECTION BASE */
+    .section {
+      padding: 6rem 10vw 4rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: #00faff;
+      text-shadow: 0 0 15px #00faff;
+      margin-bottom: 2rem;
+    }
+
+    /* ABOUT */
+    .about {
+      background: rgba(0, 10, 20, 0.6);
+      backdrop-filter: blur(5px);
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #e0f7fa;
+    }
+
+    .about-content strong {
+      color: #00faff;
+    }
+
+    /* SKILLS */
+    .skills-section {
+      padding: 4rem 2rem;
+      background: rgba(0, 10, 20, 0.6);
+      backdrop-filter: blur(5px);
+      text-align: center;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+
+    .skill-card {
+      background: #0a0a0a;
+      padding: 1rem;
+      border-radius: 12px;
+  border: 2px solid #00faff;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px #00faff, 0 0 8px rgba(0, 255, 255, 0.3);
+    }
+
+    .skill-card img {
+      width: 60px;
+      filter: drop-shadow(0 0 10px #00faff);
+    }
+
+    .skill-card p {
+      color: #00faff;
+      margin-top: 0.5rem;
+      font-weight: bold;
+    }
+
+    .skill-card:hover {
+  transform: translateY(-8px) scale(1.04);
+    }
+
+    /* PROJECTS */
+    .projects-section {
+      padding: 4rem 2rem;
+      background: rgba(0, 10, 20, 0.6);
+      text-align: left;
+    }
+
+    .projects-section .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-card {
+      background: #0a0a0a;
+      padding: 1.5rem;
+      border-radius: 16px;
+  border: 2px solid #00faff;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px #00faff, 0 0 8px rgba(0, 255, 255, 0.3);
+    }
+
+    .project-card h3 {
+      font-size: 1.3rem;
+      color: #00faff;
+      margin-bottom: 1rem;
+    }
+
+    .project-card p {
+      color: #e0f7fa;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .project-card:hover {
+  transform: translateY(-5px) scale(1.03);
+    }
+
+    /* CONTACT */
+    .contact-section {
+      text-align: center;
+      padding: 5rem 2rem;
+      background: rgba(0, 10, 20, 0.6);
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: #a0e8ff;
+      margin-bottom: 2rem;
+    }
+
+      .box-glow {
+        border: 2px solid #00faff;
+        border-radius: 10px;
+        box-shadow: 0 0 25px #00faff, 0 0 8px rgba(0,255,255,0.3);
+        margin-bottom: 1rem;
+        padding: 0.7rem 1.2rem;
+        background: rgba(0, 10, 20, 0.7);
+        transition: all 0.3s ease;
+      }
+      /* .box-glow:hover { transform: scale(1.03); } -- removed extra glow on hover, always glowing */
+    
+
+    .contact-info a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #00faff;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      background: rgba(0, 250, 255, 0.1);
+      border: 2px solid #00faff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: #00faff;
+      font-size: 1.2rem;
+    }
+
+    .social-icons a:hover {
+      background: #00faff;
+      color: #000;
+      transform: scale(1.15);
+      box-shadow: 0 0 15px #00faff;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid #222;
+    }
+
+    footer p:first-child {
+      font-style: italic;
+      color: #00faff;
+      margin-bottom: 0.5rem;
+    }
+
+    /* EDUCATION */
+    .education-section {
+      background: rgba(0, 10, 20, 0.6);
+      backdrop-filter: blur(5px);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .education-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .education-content p {
+      background: #0a0a0a;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 12px;
+  border: 2px solid #00faff;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px #00faff, 0 0 8px rgba(0, 255, 255, 0.3);
+      color: #e0f7fa;
+    }
+
+    .education-content p:hover {
+  transform: translateY(-3px) scale(1.02);
+    }
+
+    .education-content strong {
+      color: #00faff;
+    }
+
+    /* CERTIFICATIONS */
+    .certifications-section {
+      background: rgba(0, 10, 20, 0.6);
+      backdrop-filter: blur(5px);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .certifications-section ul {
+      list-style: none;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .certifications-section li {
+      background: #0a0a0a;
+      padding: 1rem 1.5rem;
+      margin: 0.8rem 0;
+      border-radius: 12px;
+  border: 2px solid #00faff;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px #00faff, 0 0 8px rgba(0, 255, 255, 0.3);
+      color: #e0f7fa;
+      position: relative;
+    }
+
+    .certifications-section li::before {
+      content: "🏆";
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .certifications-section li:hover {
+  transform: translateY(-3px) scale(1.02);
+    }
+
+    /* SOFT SKILLS */
+    .softskills-section {
+      background: rgba(0, 10, 20, 0.6);
+      backdrop-filter: blur(5px);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .softskills-section p {
+      background: #0a0a0a;
+      padding: 1.5rem;
+      margin: 1rem auto;
+      border-radius: 12px;
+  border: 2px solid #00faff;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px #00faff, 0 0 8px rgba(0, 255, 255, 0.3);
+      color: #e0f7fa;
+      font-size: 1.1rem;
+      max-width: 800px;
+    }
+
+    .softskills-section p:hover {
+  transform: translateY(-3px) scale(1.02);
+    }
+
+    /* INTERESTS */
+    .interests-section {
+      background: rgba(0, 10, 20, 0.6);
+      backdrop-filter: blur(5px);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .interests-section p {
+      background: #0a0a0a;
+      padding: 1.5rem;
+      margin: 1rem auto;
+      border-radius: 12px;
+  border: 2px solid #00faff;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px #00faff, 0 0 8px rgba(0, 255, 255, 0.3);
+      color: #e0f7fa;
+      font-size: 1.1rem;
+      max-width: 800px;
+    }
+
+    .interests-section p:hover {
+  transform: translateY(-3px) scale(1.02);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+      .terminal {
+        max-width: 100%;
+      }
+      .hero-photo {
+        max-width: 80%;
+      }
+      .terminal p {
+        font-size: 1.2rem;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 1rem;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      .social-icons {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="terminal">
+        <div class="terminal-container-glow">
+          <div class="terminal-line identity-glow box-glow">
+            <span class="terminal-label">Identity confirmed:</span> <span class="name">Swaranthi B</span>
+          </div>
+          <div class="terminal-line status-glow box-glow">
+            <span class="terminal-label">Status:</span> Infosys Springboard Intern <span class="tech-badge">Java Tech Stack 💻</span>
+          </div>
+          <div class="terminal-line specialization-glow box-glow">
+            <span class="terminal-label">Specialization:</span> <span class="highlight">AI & ML Enthusiast</span> | <span class="highlight">Problem Solver 🤖</span>
+          </div>
+          <div class="terminal-line skills-glow box-glow">
+            <span class="terminal-label">Skills active:</span> <span class="highlight">Java</span> | <span class="highlight">Python</span> | <span class="highlight">C</span> | <span class="highlight">Web Tech</span> | <span class="highlight">Cloud</span>
+          </div>
+          <div class="terminal-line mission-glow box-glow">
+            <span class="terminal-label">Mission:</span> <span class="mission-text">Building scalable <span class="ai-gradient">AI-driven</span> solutions... 🚀</span>
+          </div>
+          <div class="terminal-line location-glow box-glow">
+            <span class="terminal-label">Location:</span> <span class="highlight">Vellore</span> | <span class="collab">Ready for collaboration ✨</span>
+          </div>
+          <div class="hero-btns">
+            <a href="assets/resume.pdf" class="resume-btn advanced-btn" download>
+              <span class="btn-icon"><i class="fas fa-download"></i></span> <span class="btn-text">Download Resume</span>
+            </a>
+            <a href="#contact" class="contact-btn advanced-btn">
+              <span class="btn-icon"><i class="fas fa-paper-plane"></i></span> <span class="btn-text">Contact Me</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="photo-glow">
+          <img src="assets/profile.jpeg" alt="Swaranthi B Developer" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <p>
+          Hello! I'm <strong>Swaranthi B</strong>, an enthusiastic and curious learner passionate about technology and innovation. I enjoy solving problems, thinking critically, and exploring new domains in computer science. My journey into development started with curiosity, and has grown into a full-fledged passion for building intelligent, scalable solutions.
+        </p>
+        <p>
+          Currently, I am an <strong>Infosys Springboard Intern</strong> working on the <strong>Java Technology Stack</strong>. I specialize in <strong>Java, Python, C, and modern web technologies</strong>, with a growing focus on creating responsive, user-friendly applications and exploring AI-driven automation.
+        </p>
+        <p>
+          I have a growing interest in <strong>AI, ML, and LLMs</strong>, and I aim to expand my knowledge in AI-driven automation and cloud platforms. My goal is to leverage cutting-edge technologies like neural networks and large language models to create impactful solutions.
+        </p>
+        <p>
+          I value <strong>adaptability, problem-solving, and collaboration</strong> and aim to leverage my skills to create impactful solutions and scalable applications. When I'm not coding, I enjoy exploring new tech trends, working on innovative projects, and helping others learn programming concepts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="section">
+    <section id="skills" class="skills-section">
+      <h2 class="section-title">My Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/c.svg" alt="C" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>C</p>
+        </div>
+        <div class="skill-card">
+          <span class="java-glow">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
+          </span>
+          <p>Java</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg" alt="Python" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>Python</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/javascript.svg" alt="JavaScript" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(45deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>JavaScript</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/html5.svg" alt="HTML" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(15deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>HTML & CSS</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mysql.svg" alt="MySQL" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(30deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>MySQL & Data Structures</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/visualstudiocode.svg" alt="VS Code" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(220deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>VS Code</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>GitHub</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/jupyter.svg" alt="Jupyter" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(30deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>Jupyter / Anaconda / Google Colab</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlecloud.svg" alt="GCP" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(220deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>Google Cloud Platform (GCP)</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlebigquery.svg" alt="BigQuery" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(220deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>Cloud Storage & BigQuery</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/googlecloud.svg" alt="Compute Engine" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(120deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>Compute Engine & AI/ML on GCP</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/vmware.svg" alt="VMware" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(220deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>VMware</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tensorflow.svg" alt="AI ML" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(30deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>AI/ML & LLM Basics</p>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/openai.svg" alt="LLM" style="filter: invert(1) sepia(1) saturate(5) hue-rotate(175deg) brightness(1.2) drop-shadow(0 0 10px #00faff);" />
+          <p>Open Source LLMs (GPT-J, LLaMA, MPT)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="section education-section">
+      <h2 class="section-title">Education</h2>
+      <div class="education-content">
+        <p>
+          <strong>Bachelor of Engineering, Computer Science</strong><br>
+          Government College of Engineering, Bargur, Krishnagiri (2022–Present)<br>
+          CGPA: 8.80 (till VI semester)
+        </p>
+        <p>
+          <strong>Vaani Matriculation Hr Sec School, Vaniyambadi</strong><br>
+          HSC: 94% | SSLC: 92%
+        </p>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section id="certifications" class="section certifications-section">
+      <h2 class="section-title">Certifications</h2>
+      <ul>
+        <li>Google Cloud Data Analytics</li>
+        <li>Google Cloud Engineering Certificate</li>
+        <li>Python for Data Science – IBM</li>
+        <li>Data Science & Machine Learning for AI – Microsoft</li>
+        <li>Oracle Cloud AI and Data Science Infrastructure</li>
+      </ul>
+    </section>
+
+    <!-- SOFT SKILLS SECTION -->
+    <section id="softskills" class="section softskills-section">
+      <h2 class="section-title">Soft Skills</h2>
+      <p>Problem-Solving | Adaptability | Time Management | Critical Thinking | Communication</p>
+    </section>
+
+    <!-- AREAS OF INTEREST SECTION -->
+    <section id="interests" class="section interests-section">
+      <h2 class="section-title">Areas of Interest</h2>
+      <p>Data Science & Machine Learning | Prompt Engineering | AI-driven Automation | Efficient Web Research | Cloud Platforms</p>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects-section">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Mindful Journaling Reflectora Website</h3>
+          <p>A reflective journaling web app that helps users track daily mindfulness and productivity. Built with modern web technologies to provide an intuitive and peaceful user experience for mental wellness tracking.</p>
+        </div>
+
+        <div class="project-card">
+          <h3>Enceladus Image Carousel Website</h3>
+          <p>Interactive image carousel website showcasing stunning visuals of Enceladus. Features smooth transitions, responsive design, and optimized loading for an immersive space exploration experience.</p>
+        </div>
+
+        <div class="project-card">
+          <h3>Enceladus E-commerce Website</h3>
+          <p>Fully responsive e-commerce site with product showcase, cart functionality, and checkout process. Built with modern web standards featuring user authentication and secure payment integration.</p>
+        </div>
+
+        <div class="project-card">
+          <h3>Titanic Survival Prediction (Data Analytics)</h3>
+          <p>Data analytics project predicting Titanic passenger survival using Python and machine learning models. Implemented feature engineering, data visualization, and statistical analysis for accurate predictions.</p>
+        </div>
+
+        <div class="project-card">
+          <h3>Social Media Management System (Twitter Clone)</h3>
+          <p>Web application simulating Twitter functionality for posting, following, and messaging. Features real-time updates, user profiles, and a responsive interface for seamless social interaction.</p>
+        </div>
+
+        <div class="project-card">
+          <h3>Fraud Detection with Neural Networks (Data Science)</h3>
+          <p>Neural network model detecting fraudulent transactions in financial datasets. Implemented deep learning algorithms with high accuracy for real-time fraud detection and prevention.</p>
+        </div>
+
+        <div class="project-card">
+          <h3>Full Stack E-commerce Website</h3>
+          <p>Complete e-commerce web application with user authentication, product management, shopping cart, and secure checkout. Built with modern full-stack technologies and RESTful API architecture.</p>
+        </div>
+
+        <div class="project-card">
+          <h3>LLM Augmented Neural Cognitive Diagnosis (Multi-Model AI & NCDM)</h3>
+          <p>AI + EdTech project integrating LLMs (GPT-4/LLAMA) with cognitive student knowledge modeling. Advanced research project combining neural cognitive diagnosis models with large language models for personalized education.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section contact-section">
+      <h2 class="section-title">Contact Me</h2>
+      <p class="section-subtitle">Let's connect and collaborate! 🚀</p>
+
+      <div class="contact-info">
+        <p>📍 <strong>Location:</strong> Vellore, Tamil Nadu</p>
+        <p>📱 <strong>Phone:</strong> 7845996968</p>
+        <p>✉️ <strong>Email:</strong> <a href="mailto:swaranthib@gmail.com">swaranthib@gmail.com</a></p>
+      </div>
+
+      <div class="social-icons">
+        <a href="mailto:swaranthib@gmail.com" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://github.com/Swaranthib112004" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/swaranthi-balamurugan-16442a371" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>"Code is like humor. When you have to explain it, it's bad."</p>
+      <p>© 2025 Swaranthi B | Developer | Designed with 💻 and passion</p>
+    </footer>
+
+</body>
+</html>
