@@ -89,7 +89,7 @@ The UI architecture and design ethos were inspired by modern cyberpunk terminal 
 
 > 💡 *Deploy this to GitHub Pages, Netlify, or Vercel for a production-ready experience.*
 
-**Live Demo:** https://Swaranthib112004.github.io/MERN-STACK-BOOTCAMP/MERN/PORTFOLIO/indexmerged.html
+**Live Demo:** https://swaranthib112004.github.io/
 
 ---
 
@@ -103,21 +103,6 @@ The UI architecture and design ethos were inspired by modern cyberpunk terminal 
 ├── index.html
 └── README.md
 ```
-
----
-
-## 📤 Deployment Guide
-
-To deploy this portfolio:
-
-1. **Fork/Clone** the repo
-2. Replace `assets/profile.jpeg` and `resume.pdf` with your own
-3. Optionally customize the project section
-4. Deploy via:
-
-   * GitHub Pages: Simply enable from repo settings
-   * Vercel/Netlify: Just import the repo and deploy
-
 ---
 
 ## 📘 License
