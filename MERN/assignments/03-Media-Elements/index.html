@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enceladus - Media Elements</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff0f5; /* light pink */
+    color: #333;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    color: #ff69b4; /* pink */
+  }
+  section {
+    background-color: #e0ffff; /* light cyan blue */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  img, video, audio {
+    display: block;
+    max-width: 100%;
+    margin: 10px auto;
+    border-radius: 8px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Enceladus Media Elements by Swaranthi</h1>
+
+<section>
+  <h2>Images</h2>
+  <img src="photo.jpg" alt="Sample image">
+  <img src="small.jpg" 
+       srcset="small.jpg 400w, medium.jpg 800w, large.jpg 1200w" 
+       sizes="(max-width: 800px) 100vw, 50vw" 
+       alt="Responsive image">
+</section>
+
+<section>
+  <h2>Video</h2>
+  <video controls width="640" height="360" poster="thumbnail.jpg">
+    <source src="video.mp4" type="video/mp4">
+    <p>Your browser doesn't support HTML video. <a href="video.mp4">Download video</a></p>
+  </video>
+</section>
+
+<section>
+  <h2>Audio</h2>
+  <audio controls>
+    <source src="song.mp3" type="audio/mpeg">
+    <p>Your browser doesn't support audio. <a href="song.mp3">Download audio</a></p>
+  </audio>
+</section>
+
+<section>
+  <h2>Embedded Content</h2>
+  <iframe src="embedded-page.html" width="100%" height="400" 
+          title="Embedded content" sandbox="allow-scripts allow-same-origin">
+    <p>Your browser doesn't support iframes. <a href="embedded-page.html">View content</a></p>
+  </iframe>
+</section>
+
+</body>
+</html>
