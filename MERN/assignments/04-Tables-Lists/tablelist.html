@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tables & Lists - Swaranthi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9ff;
+      color: #333;
+      margin: 2rem;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 2rem 0;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    caption {
+      font-weight: bold;
+      margin: 0.5rem;
+      color: #0096c7;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.75rem;
+      text-align: center;
+    }
+    thead {
+      background: #caf0f8;
+    }
+    tfoot {
+      background: #ffe5ec;
+      font-weight: bold;
+    }
+    ul, ol, dl {
+      margin: 1rem 0 2rem 2rem;
+    }
+    dt {
+      font-weight: bold;
+      color: #e63946;
+    }
+    dd {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Tables & Lists Demo – Swaranthi</h1>
+
+  <!-- Advanced Table -->
+  <section>
+    <h2>Employee Performance Data</h2>
+    <table aria-describedby="empNote">
+      <caption>Employee Performance Data - Q3 2025</caption>
+      <colgroup>
+        <col style="width: 20%;">
+        <col style="width: 15%;">
+        <col style="width: 15%;">
+        <col style="width: 25%;">
+        <col style="width: 25%;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col" id="name">Employee Name</th>
+          <th scope="col" id="dept">Department</th>
+          <th scope="col" id="rating">Rating</th>
+          <th scope="col" id="projects">Projects Completed</th>
+          <th scope="col" id="notes">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" headers="name">Alice Johnson</th>
+          <td headers="dept">Engineering</td>
+          <td headers="rating">4.8 / 5</td>
+          <td headers="projects">12</td>
+          <td headers="notes">Excellent performer</td>
+        </tr>
+        <tr>
+          <th scope="row" headers="name">Bob Smith</th>
+          <td headers="dept">Design</td>
+          <td headers="rating">4.5 / 5</td>
+          <td headers="projects">8</td>
+          <td headers="notes">Innovative solutions</td>
+        </tr>
+        <tr>
+          <th scope="row" headers="name">Carol Davis</th>
+          <td headers="dept">Marketing</td>
+          <td headers="rating">4.9 / 5</td>
+          <td headers="projects">15</td>
+          <td headers="notes">Great campaign results</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row">Average</th>
+          <td colspan="2">All Departments</td>
+          <td>11.7 projects</td>
+          <td>~4.7/5 rating</td>
+        </tr>
+      </tfoot>
+    </table>
+    <p id="empNote"><em>Note:</em> Data compiled from internal performance reviews.</p>
+  </section>
+
+  <!-- Complex Table -->
+  <section>
+    <h2>Sales Report by Region</h2>
+    <table>
+      <caption>Sales Report by Region and Quarter (2025)</caption>
+      <thead>
+        <tr>
+          <th rowspan="2" scope="col">Region</th>
+          <th colspan="4" scope="colgroup">2025 Quarters</th>
+          <th rowspan="2" scope="col">Total</th>
+        </tr>
+        <tr>
+          <th scope="col">Q1</th>
+          <th scope="col">Q2</th>
+          <th scope="col">Q3</th>
+          <th scope="col">Q4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">North</th>
+          <td>$150K</td>
+          <td>$175K</td>
+          <td>$200K</td>
+          <td>$225K</td>
+          <td>$750K</td>
+        </tr>
+        <tr>
+          <th scope="row">South</th>
+          <td>$125K</td>
+          <td>$140K</td>
+          <td>$160K</td>
+          <td>$180K</td>
+          <td>$605K</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Lists -->
+  <section>
+    <h2>All List Types</h2>
+
+    <h3>Unordered List</h3>
+    <ul>
+      <li>First item</li>
+      <li>Second item</li>
+      <li>Third item with nested list:
+        <ul>
+          <li>Nested item 1</li>
+          <li>Nested item 2</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Ordered List (Alphabetical)</h3>
+    <ol type="A" start="3">
+      <li>Item C</li>
+      <li>Item D</li>
+      <li>Item E</li>
+    </ol>
+
+    <h3>Ordered List (Roman Numerals)</h3>
+    <ol type="I">
+      <li>Introduction</li>
+      <li>Methodology</li>
+      <li>Results</li>
+      <li>Conclusion</li>
+    </ol>
+
+    <h3>Definition List</h3>
+    <dl>
+      <dt>HTML</dt>
+      <dd>HyperText Markup Language - the backbone of web pages</dd>
+      <dt>CSS</dt>
+      <dd>Cascading Style Sheets - styles and layouts</dd>
+      <dt>JavaScript</dt>
+      <dd>Interactive programming language for the web</dd>
+      <dd>Also powers servers with Node.js</dd>
+      <dt>API (Application Programming Interface)</dt>
+      <dd>Set of protocols for building and integrating applications</dd>
+    </dl>
+
+    <h3>Mixed Nested Lists</h3>
+    <ol>
+      <li>Web Technologies
+        <ul>
+          <li>Frontend
+            <ol>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ol>
+          </li>
+          <li>Backend
+            <ul>
+              <li>Node.js</li>
+              <li>Python</li>
+              <li>PHP</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Databases
+        <ul>
+          <li>SQL (MySQL, PostgreSQL)</li>
+          <li>NoSQL (MongoDB, Redis)</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enceladus - ARIA Enhanced</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #f8cdda, #1fc8db, #2cb5e8);
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+
+    header, footer, nav, main, aside, article {
+      padding: 15px;
+      margin: 10px;
+      border-radius: 12px;
+    }
+
+    header {
+      background-color: #f7a8b8; /* light pink */
+      text-align: center;
+    }
+
+    nav {
+      background-color: #c8f7c5; /* cyan green */
+    }
+
+    footer {
+      background-color: #a5d8ff; /* cyan blue */
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    input, button {
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #2cb5e8;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1fc8db;
+    }
+
+    /* Tab styles */
+    [role="tablist"] {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    [role="tab"] {
+      padding: 8px 15px;
+      background: #f7a8b8;
+      border: none;
+      border-radius: 8px;
+    }
+
+    [role="tab"][aria-selected="true"] {
+      background: #2cb5e8;
+      color: #fff;
+    }
+
+    /* Responsive tweak */
+    @media (max-width: 600px) {
+      nav ul {
+        display: flex;
+        flex-direction: column;
+      }
+      header h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation with ARIA -->
+  <nav aria-label="Main navigation" role="navigation">
+    <ul>
+      <li><a href="#home" aria-current="page">Home</a></li>
+      <li><a href="#about">About Swaranthi</a></li>
+      <li><a href="#services" aria-expanded="false" aria-haspopup="true">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Breadcrumb navigation -->
+  <nav aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Enceladus</a></li>
+      <li><a href="/products">Products</a></li>
+      <li aria-current="page">Laptops</li>
+    </ol>
+  </nav>
+
+  <!-- Form with ARIA -->
+  <form role="form">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username"
+        required aria-required="true"
+        aria-describedby="username-help username-error"
+        aria-invalid="false">
+      <div id="username-help">Must be 3-20 characters</div>
+      <div id="username-error" role="alert" aria-live="polite"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email"
+        required aria-required="true"
+        aria-describedby="email-help">
+      <div id="email-help">We’ll never share your email.</div>
+    </div>
+
+    <fieldset>
+      <legend id="notification-legend">Notification Preferences</legend>
+      <div role="group" aria-labelledby="notification-legend">
+        <input type="checkbox" id="email-notify" name="notifications" value="email">
+        <label for="email-notify">Email notifications</label>
+
+        <input type="checkbox" id="sms-notify" name="notifications" value="sms">
+        <label for="sms-notify">SMS notifications</label>
+      </div>
+    </fieldset>
+  </form>
+
+  <!-- Live regions -->
+  <div aria-live="polite" id="status-message"></div>
+  <div aria-live="assertive" id="error-message" role="alert"></div>
+  <div aria-live="off" id="log-message" aria-atomic="true"></div>
+
+  <!-- Modal dialog -->
+  <div role="dialog" aria-labelledby="modal-title" aria-describedby="modal-desc" aria-modal="true">
+    <h2 id="modal-title">Confirm Action</h2>
+    <p id="modal-desc">Are you sure you want to delete this item?</p>
+    <button onclick="confirmDelete()" aria-describedby="delete-help">Yes, Delete</button>
+    <button onclick="closeModal()">Cancel</button>
+    <div id="delete-help">This action cannot be undone</div>
+  </div>
+
+  <!-- Tab interface -->
+  <div role="tablist" aria-label="Content sections">
+    <button role="tab" aria-selected="true" aria-controls="panel1" id="tab1">Overview</button>
+    <button role="tab" aria-selected="false" aria-controls="panel2" id="tab2">Details</button>
+  </div>
+  <div role="tabpanel" id="panel1" aria-labelledby="tab1">Content for Overview</div>
+  <div role="tabpanel" id="panel2" aria-labelledby="tab2" hidden>Content for Details</div>
+
+  <!-- Progress indicator -->
+  <div role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" aria-label="Upload Progress">
+    32% complete
+  </div>
+
+  <!-- Landmarks -->
+  <header role="banner">
+    <h1>Enceladus Portal</h1>
+  </header>
+  <main role="main">
+    <article role="article">
+      <h2>Article by Swaranthi</h2>
+      <p>This is an accessible article example with ARIA and semantic structure.</p>
+    </article>
+  </main>
+  <aside role="complementary">
+    <h3>Related Links</h3>
+    <ul>
+      <li><a href="#guide">Accessibility Guide</a></li>
+      <li><a href="#updates">Latest Updates</a></li>
+    </ul>
+  </aside>
+  <footer role="contentinfo">
+    <p>© 2025 Enceladus | Designed by Swaranthi</p>
+  </footer>
+</body>
+</html>

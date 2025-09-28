@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enceladus - Screen Reader Optimized</title>
+  <style>
+    body {
+      font-family: Verdana, sans-serif;
+      background: linear-gradient(to right, #f8cdda, #c8f7c5, #a5d8ff);
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #2cb5e8;
+      color: #fff;
+      padding: 8px;
+      border-radius: 6px;
+      text-decoration: none;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 10px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    button {
+      background-color: #f7a8b8;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2cb5e8;
+      color: white;
+    }
+
+    #chart-description {
+      background: #c8f7c5;
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 8px;
+    }
+
+    blockquote {
+      border-left: 4px solid #2cb5e8;
+      margin: 10px 0;
+      padding-left: 10px;
+      background: #f7f7f7;
+      border-radius: 6px;
+    }
+
+    footer {
+      margin-top: 25px;
+      padding: 10px;
+      text-align: center;
+      background: #a5d8ff;
+      border-radius: 12px;
+    }
+
+    /* Responsive tweak */
+    @media (max-width: 600px) {
+      body {
+        font-size: 14px;
+      }
+      button {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Skip navigation links -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#sidebar" class="skip-link">Skip to sidebar</a>
+
+  <!-- Hidden content for screen readers -->
+  <span class="sr-only">This text is only for screen readers - by Swaranthi</span>
+
+  <!-- Button with accessible label -->
+  <button aria-label="Close modal dialog">✖ Close</button>
+
+  <!-- Image with long description -->
+  <figure>
+    <img src="saleschart1.jpg" alt="Sales chart overview" aria-describedby="chart-description">
+    <figcaption id="chart-description">
+      Detailed description: The chart displays sales trends for Q1–Q4 2025.  
+      Q4 shows the strongest performance at <strong>$2.5M</strong>, while Q2 had the lowest at <strong>$1.2M</strong>.  
+      This growth reflects Enceladus company’s global expansion.
+    </figcaption>
+  </figure>
+
+  <!-- Abbreviations -->
+  <p>
+    Popular terms: 
+    <abbr title="World Wide Web">WWW</abbr>, 
+    <abbr title="HyperText Markup Language">HTML</abbr>, 
+    <abbr title="Cascading Style Sheets">CSS</abbr>
+  </p>
+
+  <!-- Language specification -->
+  <section id="main-content">
+    <p>The French word <span lang="fr">bonjour</span> means hello.</p>
+    <blockquote lang="es">Hola, ¿cómo estás?</blockquote>
+    <blockquote lang="de">Guten Tag! Willkommen bei Enceladus.</blockquote>
+  </section>
+
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <h3>Enceladus Quick Links</h3>
+    <ul>
+      <li><a href="#accessibility">Accessibility Guide</a></li>
+      <li><a href="#features">Features by Swaranthi</a></li>
+    </ul>
+  </aside>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Enceladus | Designed with ❤ by Swaranthi</p>
+  </footer>
+</body>
+</html>
