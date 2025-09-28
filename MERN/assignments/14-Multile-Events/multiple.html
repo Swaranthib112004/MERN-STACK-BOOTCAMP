@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enceladus - Swaranthi Interactive Cards</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --text-dark: #333;
+  --card-radius: 14px;
+  --transition: 0.3s ease;
+  --shadow-light: 0 6px 18px rgba(0,0,0,0.12);
+  --shadow-hover: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: linear-gradient(160deg, #fefefe 0%, #e0f7fa 100%);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 10px;
+}
+
+h1 {
+  color: #7dddfc;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px #ffd6e0;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.interactive-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 260px;
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-light);
+  padding: 20px;
+  margin: 15px;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), rotate var(--transition);
+  cursor: pointer;
+  background: linear-gradient(135deg, #ffd6e0, #ffbe9f);
+}
+
+.interactive-card.editing {
+  border: 2px dashed #a3f7bf;
+  background: linear-gradient(135deg, #a3f7bf, #7dddfc);
+}
+
+.interactive-card.selected {
+  border: 2px solid #ff69b4;
+  background: linear-gradient(135deg, #7dddfc, #d4bfff);
+  color: white;
+}
+
+.interactive-card img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--card-radius);
+  margin-bottom: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.interactive-card h3 {
+  font-size: 1.2rem;
+  margin: 12px 0;
+  width: 100%;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #333;
+}
+
+.interactive-card button {
+  background: #a3f7bf;
+  border: none;
+  padding: 8px 14px;
+  border-radius: var(--card-radius);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.interactive-card button:hover {
+  background: #ff69b4;
+  color: white;
+  transform: scale(1.05);
+}
+
+.interactive-card:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: var(--shadow-hover);
+}
+
+.cards-container article:nth-child(2) { background: linear-gradient(135deg, #7dddfc, #a3f7bf); }
+.cards-container article:nth-child(3) { background: linear-gradient(135deg, #fff3b0, #d4bfff); }
+.cards-container article:nth-child(4) { background: linear-gradient(135deg, #ffbe9f, #ffc0cb); }
+
+@media (max-width: 768px) {
+  .interactive-card { width: 90%; }
+}
+</style>
+</head>
+<body>
+
+<h1>Enceladus - Swaranthi Interactive Cards</h1>
+
+<div class="cards-container">
+
+  <article class="interactive-card" 
+      onclick="selectCard(this)" 
+      ondblclick="editCard(this)" 
+      onmouseover="highlightCard(this)" 
+      onmouseout="unhighlightCard(this)" 
+      onkeydown="handleCardKeyboard(event, this)" 
+      tabindex="0" 
+      role="button" 
+      aria-label="Interactive card">
+
+    <img src="https://via.placeholder.com/260x150" 
+         onload="imageLoaded(this)" 
+         onerror="imageError(this)" 
+         alt="Card image">
+
+    <h3 contenteditable="true" oninput="updateTitle(this)" onblur="saveTitle(this)">
+      <i class="fas fa-lightbulb"></i> Idea
+    </h3>
+
+    <button onclick="event.stopPropagation(); deleteCard(this.parentElement)">
+      <i class="fas fa-trash-alt"></i> Delete
+    </button>
+  </article>
+
+  <article class="interactive-card" 
+      onclick="selectCard(this)" 
+      ondblclick="editCard(this)" 
+      onmouseover="highlightCard(this)" 
+      onmouseout="unhighlightCard(this)" 
+      onkeydown="handleCardKeyboard(event, this)" 
+      tabindex="0" 
+      role="button" 
+      aria-label="Interactive card">
+
+    <img src="https://via.placeholder.com/260x150?text=Card+2" 
+         onload="imageLoaded(this)" 
+         onerror="imageError(this)" 
+         alt="Card image">
+
+    <h3 contenteditable="true" oninput="updateTitle(this)" onblur="saveTitle(this)">
+      <i class="fas fa-rocket"></i> Launch
+    </h3>
+
+    <button onclick="event.stopPropagation(); deleteCard(this.parentElement)">
+      <i class="fas fa-trash-alt"></i> Delete
+    </button>
+  </article>
+
+  <article class="interactive-card" 
+      onclick="selectCard(this)" 
+      ondblclick="editCard(this)" 
+      onmouseover="highlightCard(this)" 
+      onmouseout="unhighlightCard(this)" 
+      onkeydown="handleCardKeyboard(event, this)" 
+      tabindex="0" 
+      role="button" 
+      aria-label="Interactive card">
+
+    <img src="https://via.placeholder.com/260x150?text=Card+3" 
+         onload="imageLoaded(this)" 
+         onerror="imageError(this)" 
+         alt="Card image">
+
+    <h3 contenteditable="true" oninput="updateTitle(this)" onblur="saveTitle(this)">
+      <i class="fas fa-heart"></i> Favorite
+    </h3>
+
+    <button onclick="event.stopPropagation(); deleteCard(this.parentElement)">
+      <i class="fas fa-trash-alt"></i> Delete
+    </button>
+  </article>
+
+  <article class="interactive-card" 
+      onclick="selectCard(this)" 
+      ondblclick="editCard(this)" 
+      onmouseover="highlightCard(this)" 
+      onmouseout="unhighlightCard(this)" 
+      onkeydown="handleCardKeyboard(event, this)" 
+      tabindex="0" 
+      role="button" 
+      aria-label="Interactive card">
+
+    <img src="https://via.placeholder.com/260x150?text=Card+4" 
+         onload="imageLoaded(this)" 
+         onerror="imageError(this)" 
+         alt="Card image">
+
+    <h3 contenteditable="true" oninput="updateTitle(this)" onblur="saveTitle(this)">
+      <i class="fas fa-star"></i> Highlight
+    </h3>
+
+    <button onclick="event.stopPropagation(); deleteCard(this.parentElement)">
+      <i class="fas fa-trash-alt"></i> Delete
+    </button>
+  </article>
+
+</div>
+
+<script>
+function selectCard(card) { 
+  document.querySelectorAll('.interactive-card').forEach(c => c.classList.remove('selected')); 
+  card.classList.add('selected'); 
+}
+
+function editCard(card) { 
+  card.classList.add('editing'); 
+  card.querySelector('h3').focus(); 
+}
+
+function highlightCard(card) { 
+  card.style.transform = 'scale(1.05)'; 
+  card.style.boxShadow = '0 12px 24px rgba(0,0,0,0.2)'; 
+}
+
+function unhighlightCard(card) { 
+  card.style.transform = 'scale(1)'; 
+  card.style.boxShadow = '0 2px 4px rgba(0,0,0,0.1)'; 
+}
+
+function handleCardKeyboard(event, card) { 
+  if (event.key === 'Enter' || event.key === ' ') { 
+    event.preventDefault(); 
+    selectCard(card); 
+  } else if (event.key === 'Delete') { 
+    deleteCard(card); 
+  } 
+}
+
+function updateTitle(element) { 
+  console.log('Title changed to:', element.textContent); 
+}
+
+function saveTitle(element) { 
+  element.parentElement.classList.remove('editing'); 
+}
+
+function deleteCard(card) { 
+  if (confirm('Are you sure you want to delete this card?')) { card.remove(); } 
+}
+
+function imageLoaded(img) { 
+  img.style.opacity = '1'; 
+}
+
+function imageError(img) { 
+  img.src = 'https://via.placeholder.com/260x150?text=Image+Error'; 
+  img.alt = 'Image failed to load'; 
+}
+</script>
+
+</body>
+</html>

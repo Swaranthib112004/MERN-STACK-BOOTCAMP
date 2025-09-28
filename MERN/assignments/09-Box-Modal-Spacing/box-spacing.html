@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enceladus - Box Model & Spacing</title>
+  <style>
+    /* Global reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 20px;
+      background: #fdfdfd;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(90deg, #ffb6c1, #74f2ce, #74b9ff); /* pink + cyan green + cyan blue */
+      color: white;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    /* Box model examples */
+    .box-content {
+      box-sizing: content-box;
+      width: 300px;
+      height: 200px;
+      padding: 20px;
+      border: 5px solid #74b9ff; /* cyan blue */
+      margin: 10px;
+      background: #ffeef8; /* light pink bg */
+    }
+
+    .box-border {
+      box-sizing: border-box;
+      width: 300px;
+      height: 200px;
+      padding: 20px;
+      border: 5px solid #55efc4; /* cyan green */
+      margin: 10px;
+      background: #e6faff; /* light cyan bg */
+    }
+
+    /* Margin examples */
+    .margin-demo {
+      background: #fafafa;
+      margin: 0 auto;
+      padding: 10px;
+      border: 2px dashed #ff9ff3; /* pastel pink */
+      text-align: center;
+    }
+
+    /* Padding examples */
+    .padding-demo {
+      background: #dff9fb;
+      padding: 25px;
+      border: 2px solid #00cec9;
+    }
+
+    /* Border examples */
+    .border-demo {
+      border: 2px solid #74b9ff;
+      border-width: 2px 4px 6px 8px;
+      border-style: solid dashed dotted double;
+      border-color: #ff6fa7 #55efc4 #74b9ff #ffeaa7;
+      border-radius: 12px 6px 18px 24px;
+      padding: 15px;
+      background: #fff0f6;
+    }
+
+    /* Advanced spacing system */
+    .spacing-system {
+      --space-xs: 0.25rem; /* 4px */
+      --space-sm: 0.5rem;  /* 8px */
+      --space-md: 1rem;    /* 16px */
+      --space-lg: 1.5rem;  /* 24px */
+      --space-xl: 2rem;    /* 32px */
+      --space-2xl: 3rem;   /* 48px */
+      --space-3xl: 4rem;   /* 64px */
+    }
+
+    .space-xs { margin: var(--space-xs); }
+    .space-sm { margin: var(--space-sm); }
+    .space-md { margin: var(--space-md); }
+    .space-lg { margin: var(--space-lg); }
+    .space-xl { margin: var(--space-xl); }
+
+    /* Negative margins */
+    .negative-margin {
+      margin-top: -10px;
+      margin-left: -20px;
+      background: #ffeaa7;
+      padding: 5px;
+    }
+
+    /* Margin collapse fix */
+    .margin-collapse-fix {
+      padding: 2px 0;
+      background: #f1f2f6;
+    }
+
+    /* Overflow demo */
+    .overflow-demo {
+      width: 250px;
+      height: 120px;
+      border: 2px solid #ff9ff3;
+      padding: 8px;
+      background: #f9f9ff;
+      overflow-y: scroll;
+    }
+
+    /* Responsive box */
+    .responsive-box {
+      width: 100%;
+      max-width: 600px;
+      min-width: 280px;
+      height: auto;
+      min-height: 200px;
+      max-height: 400px;
+      background: #e3f2fd;
+      border: 3px solid #74b9ff;
+      margin: 20px auto;
+      border-radius: 12px;
+      padding: 15px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      header {
+        font-size: 0.9em;
+        padding: 0.8rem;
+      }
+      .box-content, .box-border {
+        width: 100%;
+        height: auto;
+      }
+      .responsive-box {
+        max-width: 100%;
+        border: 2px solid #55efc4;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Enceladus - Box Model & Spacing</h1>
+    <p>Created by Swaranthi</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Box Model Examples</h2>
+      <div class="box-content">Content-box example</div>
+      <div class="box-border">Border-box example</div>
+    </section>
+
+    <section>
+      <h2>Margin & Padding</h2>
+      <div class="margin-demo">This is margin demo</div>
+      <div class="padding-demo">This is padding demo</div>
+    </section>
+
+    <section>
+      <h2>Borders</h2>
+      <div class="border-demo">Different border styles</div>
+    </section>
+
+    <section>
+      <h2>Spacing System</h2>
+      <div class="spacing-system">
+        <p class="space-xs">Extra Small Space</p>
+        <p class="space-md">Medium Space</p>
+        <p class="space-xl">Extra Large Space</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Negative Margin & Collapse Fix</h2>
+      <div class="negative-margin">Negative margin applied</div>
+      <div class="margin-collapse-fix">Margin collapse fixed here</div>
+    </section>
+
+    <section>
+      <h2>Overflow Demo</h2>
+      <div class="overflow-demo">
+        This box demonstrates overflow. If the text is longer than the box size, a scrollbar will appear. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac orci vitae eros vehicula suscipit eget nec sapien.
+      </div>
+    </section>
+
+    <section>
+      <h2>Responsive Box</h2>
+      <div class="responsive-box">
+        This is a responsive box. Resize the browser window to see how it adapts!
+      </div>
+    </section>
+  </main>
+</body>
+</html>
