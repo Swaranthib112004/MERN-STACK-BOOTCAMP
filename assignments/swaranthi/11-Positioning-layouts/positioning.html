@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enceladus - Layout & Responsive Design</title>
+  <style>
+    /* Global aesthetic theme */
+    :root {
+      --pink: #f7c6d9;
+      --cyan-green: #9ef5cf;
+      --cyan-blue: #9ad7f5;
+      --dark: #333;
+      --white: #fff;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, var(--pink), var(--cyan-green), var(--cyan-blue));
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: var(--dark);
+      margin-top: 20px;
+    }
+
+    section {
+      margin: 30px auto;
+      padding: 20px;
+      background: var(--white);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 1000px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Static positioning */
+    .static-element {
+      position: static;
+      background: var(--pink);
+      padding: 15px;
+      border: 2px dashed var(--cyan-blue);
+      margin: 10px 0;
+    }
+
+    /* Relative positioning */
+    .relative-container {
+      position: relative;
+      width: 320px;
+      height: 200px;
+      background: var(--cyan-green);
+      border: 3px solid var(--cyan-blue);
+      margin: auto;
+      border-radius: 8px;
+    }
+    .relative-item {
+      position: relative;
+      top: 20px;
+      left: 30px;
+      background: var(--cyan-blue);
+      color: var(--white);
+      padding: 10px;
+      width: 120px;
+      border-radius: 6px;
+      text-align: center;
+    }
+    .layered-text {
+      position: relative;
+      z-index: 2;
+      background: var(--white);
+      padding: 15px;
+      border-radius: 6px;
+      border: 1px solid var(--pink);
+    }
+
+    /* Absolute positioning */
+    .absolute-container {
+      position: relative;
+      width: 400px;
+      height: 250px;
+      background: var(--pink);
+      border: 2px dashed var(--dark);
+      margin: auto;
+      border-radius: 10px;
+    }
+    .absolute-item {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--cyan-green);
+      color: var(--dark);
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .top-left { top: 0; left: 0; position: absolute; background: var(--cyan-blue); padding: 5px; border-radius: 4px; }
+    .top-right { top: 0; right: 0; position: absolute; background: var(--cyan-green); padding: 5px; border-radius: 4px; }
+    .bottom-left { bottom: 0; left: 0; position: absolute; background: var(--pink); padding: 5px; border-radius: 4px; }
+    .bottom-right { bottom: 0; right: 0; position: absolute; background: var(--cyan-blue); padding: 5px; border-radius: 4px; }
+    .absolute-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--white);
+      padding: 12px;
+      border: 2px solid var(--cyan-blue);
+      border-radius: 8px;
+    }
+
+    /* Fixed positioning */
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--cyan-blue);
+      color: var(--dark);
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .fixed-header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+    .fixed-sidebar {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 240px;
+      height: calc(100vh - 60px);
+      background: var(--cyan-green);
+      border-right: 1px solid var(--cyan-blue);
+      padding: 15px;
+      overflow-y: auto;
+    }
+    .fixed-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--pink);
+      color: var(--dark);
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      cursor: pointer;
+      z-index: 1001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+    .fixed-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 24px;
+    }
+
+    /* Sticky positioning */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      background: var(--pink);
+      border-bottom: 2px solid var(--cyan-blue);
+      z-index: 100;
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+    }
+    .sticky-sidebar {
+      position: sticky;
+      top: 20px;
+      background: var(--cyan-blue);
+      padding: 10px;
+      border-radius: 6px;
+    }
+    .sticky-table th {
+      position: sticky;
+      top: 0;
+      background: var(--cyan-green);
+      z-index: 10;
+      box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+      padding: 8px;
+    }
+    .sticky-footer {
+      position: sticky;
+      bottom: 0;
+      background: var(--cyan-green);
+      padding: 15px;
+      border-top: 1px solid var(--cyan-blue);
+      text-align: center;
+      font-weight: bold;
+    }
+
+    /* Responsive media query */
+    @media (max-width: 600px) {
+      .relative-container, .absolute-container {
+        width: 100%;
+        height: auto;
+      }
+      .fixed-sidebar {
+        display: none; /* hide sidebar on small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed Header -->
+  <header class="fixed-header">
+    <h1>Enceladus</h1>
+    <span>by Swaranthi</span>
+  </header>
+
+  <!-- Fixed Sidebar -->
+  <aside class="fixed-sidebar">
+    <nav>
+      <ul>
+        <li><a href="#static">Static</a></li>
+        <li><a href="#relative">Relative</a></li>
+        <li><a href="#absolute">Absolute</a></li>
+        <li><a href="#fixed">Fixed</a></li>
+        <li><a href="#sticky">Sticky</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main style="margin-left:260px; padding:80px 20px 40px;">
+
+    <!-- Static -->
+    <section id="static">
+      <h2>Static Positioning</h2>
+      <div class="static-element">This is a static element (default flow)</div>
+    </section>
+
+    <!-- Relative -->
+    <section id="relative">
+      <h2>Relative Positioning</h2>
+      <div class="relative-container">
+        <div class="relative-item">Relative Box</div>
+        <p class="layered-text">Layered Text on Relative Container</p>
+      </div>
+    </section>
+
+    <!-- Absolute -->
+    <section id="absolute">
+      <h2>Absolute Positioning</h2>
+      <div class="absolute-container">
+        <div class="absolute-item">Absolute Item</div>
+        <div class="top-left">Top Left</div>
+        <div class="top-right">Top Right</div>
+        <div class="bottom-left">Bottom Left</div>
+        <div class="bottom-right">Bottom Right</div>
+        <div class="absolute-center">Centered Box</div>
+      </div>
+    </section>
+
+    <!-- Fixed -->
+    <section id="fixed">
+      <h2>Fixed Positioning</h2>
+      <p>Scroll down to see fixed header, sidebar, floating action button, and overlay.</p>
+      <button onclick="document.querySelector('.fixed-overlay').style.display='flex'">Show Overlay</button>
+    </section>
+
+    <!-- Sticky -->
+    <section id="sticky">
+      <h2>Sticky Positioning</h2>
+      <nav class="sticky-nav">Sticky Navigation (scroll to test)</nav>
+      <article class="sticky-sidebar">
+        <p>This sidebar stays in view while scrolling.</p>
+      </article>
+      <table class="sticky-table" border="1" width="100%">
+        <thead>
+          <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Row 1</td><td>Data</td></tr>
+          <tr><td>Row 2</td><td>Data</td></tr>
+          <tr><td>Row 3</td><td>Data</td></tr>
+          <tr><td>Row 4</td><td>Data</td></tr>
+          <tr><td>Row 5</td><td>Data</td></tr>
+        </tbody>
+      </table>
+      <footer class="sticky-footer">Sticky Footer - Enceladus</footer>
+    </section>
+  </main>
+
+  <!-- Floating Action Button -->
+  <button class="fixed-fab">+</button>
+
+  <!-- Fixed Overlay -->
+  <div class="fixed-overlay" onclick="this.style.display='none'">
+    Fixed Overlay (Click to Close)
+  </div>
+
+</body>
+</html>

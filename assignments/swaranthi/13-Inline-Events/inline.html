@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enceladus - Swaranthi Interactive Events</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root {
+  --light-pink: #ffd6e0;
+  --cyan-green: #a3f7bf;
+  --cyan-blue: #7dddfc;
+  --yellow: #fff3b0;
+  --purple: #d4bfff;
+  --orange: #ffbe9f;
+  --text-dark: #333;
+  --border-radius: 12px;
+  --card-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  --highlight: #ff69b4;
+  --transition: 0.3s ease;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #fefefe;
+  color: var(--text-dark);
+}
+
+header, footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--cyan-blue);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: var(--border-radius);
+}
+
+section {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--highlight);
+  border-bottom: 2px solid var(--highlight);
+  padding-bottom: 5px;
+}
+
+/* Box container styling */
+.box {
+  width: 90%;
+  max-width: 900px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  background: white;
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+/* Inner card styling */
+.card-item {
+  width: 150px;
+  height: 150px;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--text-dark);
+  background: white;
+  box-shadow: var(--card-shadow);
+  padding: 15px;
+  cursor: pointer;
+  transition: transform var(--transition), background var(--transition), color var(--transition);
+}
+
+.card-item:hover {
+  transform: scale(1.05);
+  background: var(--highlight);
+  color: white;
+}
+
+/* Card icons styling */
+.card-item i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Section specific colors */
+#mouse-events { background: var(--light-pink); }
+#keyboard-events { background: var(--cyan-green); }
+#form-events { background: var(--cyan-blue); }
+#window-events { background: var(--yellow); }
+#focus-events { background: var(--purple); }
+#touch-events { background: var(--orange); }
+
+/* Tooltips and previews */
+#preview { margin-top: 10px; max-width: 200px; border-radius: var(--border-radius); }
+
+/* Input and textarea styles */
+input, textarea, select, button {
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--highlight);
+  box-shadow: 0 0 8px var(--highlight);
+}
+
+button {
+  background: var(--cyan-green);
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--highlight);
+  color: white;
+}
+
+/* Scrollable div */
+.scrollable {
+  height: 200px;
+  overflow-y: scroll;
+  border-radius: var(--border-radius);
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 90%;
+  max-width: 500px;
+  background: #f9f9f9;
+}
+
+/* Responsive media queries */
+@media (max-width: 768px) {
+  .card-item { width: 120px; height: 120px; font-size: 0.9rem; }
+}
+
+</style>
+</head>
+<body onload="initializePage()" onunload="cleanup()">
+
+<header>
+  <h1>Enceladus - Swaranthi Interactive Events</h1>
+  <p>Experiment with Mouse, Keyboard, Form, Window, Focus & Touch Events</p>
+</header>
+
+<!-- MOUSE EVENTS -->
+<section id="mouse-events">
+  <h2>Mouse Events</h2>
+  <div class="box">
+    <div class="card-item"><i class="fas fa-mouse-pointer"></i> Click Alert
+      <button onclick="alert('Button clicked!')">Click Me</button>
+    </div>
+    <div class="card-item"><i class="fas fa-toggle-on"></i> Toggle Menu
+      <button onclick="toggleMenu(this)">Toggle</button>
+    </div>
+    <div class="card-item"><i class="fas fa-paint-brush"></i> Change Color
+      <button onclick="changeColor(this, 'red')">Red</button>
+    </div>
+    <div class="card-item" onmouseover="showTooltip(this)" onmouseout="hideTooltip(this)">
+      <i class="fas fa-info-circle"></i> Tooltip Hover
+    </div>
+    <div class="card-item">
+      <i class="fas fa-image"></i> Image Hover
+      <img src="hover.jpeg" onmouseover="this.src='image-hover.jpg'" onmouseout="this.src='image.jpg'" alt="Hover image" style="width:100%; border-radius:8px;">
+    </div>
+    <div class="card-item" onmousedown="pressEffect(this)" onmouseup="releaseEffect(this)">
+      <i class="fas fa-hand-paper"></i> Press Button
+      <button>Press Me</button>
+    </div>
+    <div class="card-item" ondblclick="expandCard(this)">
+      <i class="fas fa-expand"></i> Double Click
+    </div>
+    <div class="card-item" oncontextmenu="showCustomMenu(event); return false;">
+      <i class="fas fa-bars"></i> Right Click
+    </div>
+  </div>
+</section>
+
+<!-- KEYBOARD EVENTS -->
+<section id="keyboard-events">
+  <h2>Keyboard Events</h2>
+  <div class="box">
+    <input type="text" onkeydown="handleKeyDown(event)" onkeyup="handleKeyUp(event)" onkeypress="handleKeyPress(event)" placeholder="Type something...">
+    <input type="text" onkeydown="if(event.key==='Enter') submitForm()" placeholder="Press Enter">
+    <textarea onkeyup="updateCounter(this)" maxlength="100" placeholder="Type here..."></textarea>
+    <div id="counter">0/100 characters</div>
+    <input type="text" onfocus="highlightField(this)" onblur="removeHighlight(this)" placeholder="Tab focus">
+  </div>
+</section>
+
+<!-- FORM EVENTS -->
+<section id="form-events">
+  <h2>Form Events</h2>
+  <form onsubmit="return validateForm(this)">
+    <input type="email" oninput="validateEmail(this)" onchange="checkEmailAvailability(this)" required placeholder="Email">
+    <select onchange="updateOptions(this)">
+      <option value="">Choose...</option>
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+    </select>
+    <input type="checkbox" onchange="toggleSection(this)" id="subscribe"> Subscribe
+    <button type="submit">Submit</button>
+    <button type="reset" onclick="clearForm()">Reset</button>
+    <input type="password" oninput="checkPasswordStrength(this)" onpaste="return false" placeholder="Password">
+    <input type="file" onchange="previewFile(this)" accept="image/*">
+    <div id="preview"></div>
+  </form>
+</section>
+
+<!-- WINDOW EVENTS -->
+<section id="window-events">
+  <h2>Window Events</h2>
+  <div class="scrollable" onscroll="handleScroll(this)">
+    <div style="height:500px;">Scrollable content</div>
+  </div>
+  <div id="responsive-content" onresize="adjustLayout()" style="width:100%; height:200px; background:#e6f7ff; display:flex; align-items:center; justify-content:center;">
+    Resize the window
+  </div>
+</section>
+
+<!-- FOCUS EVENTS -->
+<section id="focus-events">
+  <h2>Focus Events</h2>
+  <input type="text" onfocus="this.style.backgroundColor='#e6f3ff'" onblur="this.style.backgroundColor=''" placeholder="Focus me">
+  <input type="text" tabindex="1" onfocus="showHint(1)">
+  <input type="text" tabindex="2" onfocus="showHint(2)">
+  <input type="text" tabindex="3" onfocus="showHint(3)">
+</section>
+
+<!-- TOUCH EVENTS -->
+<section id="touch-events">
+  <h2>Touch Events (Mobile)</h2>
+  <div ontouchstart="handleTouchStart(event)" ontouchmove="handleTouchMove(event)" ontouchend="handleTouchEnd(event)" style="width:200px; height:200px; background:#007acc; color:white; display:flex; align-items:center; justify-content:center; border-radius:12px;">
+    Touch me (mobile)
+  </div>
+  <div ongesturestart="handleGestureStart(event)" ongesturechange="handleGestureChange(event)" ongestureend="handleGestureEnd(event)" style="margin-top:10px;">
+    Pinch to zoom (iOS Safari)
+  </div>
+</section>
+
+<footer>
+  © 2025 Enceladus | Built by Swaranthi
+</footer>
+
+</body>
+</html>

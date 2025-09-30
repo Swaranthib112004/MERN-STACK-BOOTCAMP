@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enceladus Tech | Advanced CSS Selectors - by Swaranthi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fbff;
+      color: #2c3e50;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    header img {
+      max-width: 80px;
+      margin-right: 15px;
+    }
+
+    header h1 {
+      color: #2cb5e8; /* cyan-blue */
+      margin: 0;
+    }
+
+    /* === Advanced CSS Selectors & Styling for Enceladus by Swaranthi === */
+
+    input[required] {
+      border-left: 3px solid #ff6f91; /* light pink */
+      background: #fff0f5;
+      padding: 5px;
+    }
+
+    img[alt] {
+      border: 2px solid #28a745;
+      border-radius: 6px;
+      max-width: 200px;
+      margin: 5px;
+    }
+
+    input[type="email"] {
+      background-color: #e6f3ff;
+      border: 1px solid #2cb5e8;
+      border-radius: 4px;
+      padding: 6px;
+    }
+
+    button[type="submit"] {
+      background-color: #2cb5e8;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #20c997;
+    }
+
+    a[href*="example.com"] {
+      color: #28a745;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    img[src*="thumbnail"] {
+      max-width: 150px;
+      border: 2px solid #a5d8ff;
+    }
+
+    a[href^="https://"] {
+      padding-left: 22px;
+      background: url('secure-icon.png') no-repeat left center;
+      background-size: 16px 16px;
+    }
+
+    a[href^="mailto:"] {
+      color: #ff6f91;
+      font-style: italic;
+    }
+
+    a[href^="tel:"] {
+      color: #2cb5e8;
+      font-weight: bold;
+    }
+
+    a[href$=".pdf"] {
+      color: #e63946;
+      text-decoration: underline dotted;
+    }
+
+    a[href$=".zip"] {
+      font-weight: bold;
+      color: #ff9f1c;
+    }
+
+    img[src$=".svg"] {
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.25));
+      background: #f0f8ff;
+      padding: 4px;
+    }
+
+    img[alt~="photo"] {
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(44,181,232,0.4);
+    }
+
+    div[class~="featured"] {
+      background-color: #e0ffe0;
+      border: 1px solid #28a745;
+      padding: 8px;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+
+    p[lang|="en"] {
+      font-family: "Georgia", serif;
+      color: #2c3e50;
+    }
+
+    input[type="email" i] {
+      background: #f0f8ff;
+      border: 1px solid #20c997;
+    }
+
+    input[type="text"][required] {
+      border: 2px solid #ffc107;
+      background: #fffbe7;
+      border-radius: 6px;
+      padding: 5px;
+    }
+
+    button[type="submit"][disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: #ccc;
+      color: #666;
+    }
+
+    .links a {
+      display: block;
+      margin: 5px 0;
+    }
+
+    section.products {
+      margin-top: 20px;
+    }
+
+    section.products h2 {
+      color: #20c997; /* cyan-green */
+    }
+
+    .product-item {
+      margin: 15px 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header with Logo -->
+  <header>
+    <img src="enceladus logo.jfif" alt="enceladus logo">
+    <h1>Enceladus Tech Products</h1>
+  </header>
+
+  <!-- Contact Form -->
+  <form>
+    <label for="name">Name (required):</label>
+    <input type="text" id="name" required placeholder="Enter your name"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="swaranthi@example.com"><br><br>
+
+    <button type="submit">Submit</button>
+    <button type="submit" disabled>Disabled Submit</button>
+  </form>
+
+  <hr>
+
+  <!-- Links Section -->
+  <div class="links">
+    <h2>Resources</h2>
+    <a href="https://example.com">Secure Example Link</a>
+    <a href="mailto:swaranthi@enceladus.com">Send Email</a>
+    <a href="tel:+123456789">Call Us</a>
+    <a href="document.pdf">Download Product PDF</a>
+    <a href="archive.zip">Download Product Bundle</a>
+  </div>
+
+  <hr>
+
+  <!-- Welcome / Featured -->
+  <div class="featured">
+    <p lang="en-US">Welcome to Enceladus Tech! Explore our innovative products crafted with passion by <strong>Swaranthi</strong>.</p>
+  </div>
+
+  <!-- Products Section -->
+  <section class="products">
+    <h2>Our Tech Products</h2>
+
+    <div class="product-item">
+      <img src="product photo thumbnail.jpg" alt="product photo thumbnail">
+      <p>High-performance laptop with sleek design and powerful processors for work and gaming.</p>
+    </div>
+
+    <div class="product-item">
+      <img src="another.jfif" alt="another photo">
+      <p>Next-gen smartphone with advanced camera, long battery life, and vibrant display.</p>
+    </div>
+  </section>
+
+</body>
+</html>

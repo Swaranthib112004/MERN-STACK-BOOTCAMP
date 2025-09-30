@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enceladus - Swaranthi Playground</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root {
+  --light-pink: #ffd6e0;
+  --cyan-green: #a3f7bf;
+  --cyan-blue: #7dddfc;
+  --yellow: #fff3b0;
+  --purple: #d4bfff;
+  --orange: #ffbe9f;
+  --text-dark: #333;
+  --border-radius: 14px;
+  --card-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  --highlight: #ff69b4;
+}
+
+/* Global styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background: #fefefe;
+  color: var(--text-dark);
+}
+
+header, footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--cyan-blue);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+section {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--highlight);
+}
+
+/* Box container styling */
+.box {
+  width: 90%;
+  max-width: 800px;
+  border: 2px solid #ccc;
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  background: white;
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.box:hover {
+  transform: translateY(-5px);
+  border-color: var(--highlight);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+/* Inner card styling */
+.card-item {
+  width: 150px;
+  height: 150px;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--text-dark);
+  background: white;
+  box-shadow: var(--card-shadow);
+  padding: 10px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.card-item:hover {
+  transform: scale(1.05);
+  background: var(--highlight);
+  color: white;
+}
+
+/* Section colors */
+#basic { background: var(--light-pink); }
+#advanced { background: var(--cyan-green); }
+#container { background: var(--cyan-blue); color: #fff; }
+
+/* Icons styling */
+.card-item i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Basic Media Queries Example */
+#basic .card-item:nth-child(1) { background: #fff3b0; }
+#basic .card-item:nth-child(2) { background: #ffbe9f; }
+#basic .card-item:nth-child(3) { background: #d4bfff; }
+#basic .card-item:nth-child(4) { background: #ffd6e0; }
+#basic .card-item:nth-child(5) { background: #a3f7bf; }
+#basic .card-item:nth-child(6) { background: #7dddfc; }
+#basic .card-item:nth-child(7) { background: #ffe0ac; }
+#basic .card-item:nth-child(8) { background: #ffc0cb; }
+
+/* Advanced Media Queries Example */
+#advanced .card-item:nth-child(1) { background: #d4bfff; }
+#advanced .card-item:nth-child(2) { background: #ffd6e0; }
+#advanced .card-item:nth-child(3) { background: #7dddfc; }
+#advanced .card-item:nth-child(4) { background: #a3f7bf; }
+#advanced .card-item:nth-child(5) { background: #ffbe9f; }
+#advanced .card-item:nth-child(6) { background: #fff3b0; }
+#advanced .card-item:nth-child(7) { background: #ffc0cb; }
+#advanced .card-item:nth-child(8) { background: #ffe0ac; }
+
+/* Container Queries Example */
+.container-card { container-type: inline-size; container-name: card; }
+.container-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.container-box .card-item {
+  width: 120px;
+  height: 120px;
+}
+
+/* Container query adjustments */
+@container card (min-width: 300px) { .container-box { flex-direction: row; } }
+@container card (min-width: 500px) { .container-box { flex-direction: column; } }
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Enceladus - Swaranthi Playground</h1>
+  <p>Interactive Responsive Design Demo with 8 Boxes per Section</p>
+</header>
+
+<!-- BASIC MEDIA QUERIES -->
+<section id="basic">
+  <h2>Basic Media Queries</h2>
+  <div class="box">
+    <div class="card-item"><i class="fas fa-mobile-alt"></i> Mobile Layout</div>
+    <div class="card-item"><i class="fas fa-desktop"></i> Desktop Layout</div>
+    <div class="card-item"><i class="fas fa-tablet-alt"></i> Tablet View</div>
+    <div class="card-item"><i class="fas fa-bars"></i> Navigation</div>
+    <div class="card-item"><i class="fas fa-columns"></i> Grid System</div>
+    <div class="card-item"><i class="fas fa-align-left"></i> Typography</div>
+    <div class="card-item"><i class="fas fa-image"></i> Media</div>
+    <div class="card-item"><i class="fas fa-link"></i> Links</div>
+  </div>
+</section>
+
+<!-- ADVANCED MEDIA QUERIES -->
+<section id="advanced">
+  <h2>Advanced Media Queries</h2>
+  <div class="box">
+    <div class="card-item"><i class="fas fa-arrows-alt-v"></i> Orientation</div>
+    <div class="card-item"><i class="fas fa-moon"></i> Dark Mode</div>
+    <div class="card-item"><i class="fas fa-hand-paper"></i> Reduced Motion</div>
+    <div class="card-item"><i class="fas fa-layer-group"></i> Layered Layout</div>
+    <div class="card-item"><i class="fas fa-expand-arrows-alt"></i> Fullscreen</div>
+    <div class="card-item"><i class="fas fa-palette"></i> Theme Colors</div>
+    <div class="card-item"><i class="fas fa-mouse-pointer"></i> Pointer</div>
+    <div class="card-item"><i class="fas fa-print"></i> Print Styles</div>
+  </div>
+</section>
+
+<!-- CONTAINER QUERIES -->
+<section id="container" class="container-card">
+  <h2>Container Queries</h2>
+  <div class="box container-box">
+    <div class="card-item"><i class="fas fa-cube"></i> Box 1</div>
+    <div class="card-item"><i class="fas fa-cube"></i> Box 2</div>
+    <div class="card-item"><i class="fas fa-cube"></i> Box 3</div>
+    <div class="card-item"><i class="fas fa-cube"></i> Box 4</div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Enceladus | Built by Swaranthi
+</footer>
+
+</body>
+</html>

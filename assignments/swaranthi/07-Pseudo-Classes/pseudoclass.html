@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enceladus Pseudo-Classes Demo | by Swaranthi</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f9fbff;
+      color: #2c3e50;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      color: #2cb5e8; /* cyan-blue */
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    nav li {
+      padding: 5px 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    /* === User Action Pseudo-classes === */
+    a:link {
+      color: #2cb5e8; /* cyan-blue */
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: #6f42c1;
+    }
+
+    a:hover {
+      color: #ff6f91; /* light pink */
+      text-decoration: underline;
+      transform: translateY(-1px);
+      transition: all 0.2s ease;
+    }
+
+    a:active {
+      color: #20c997; /* cyan-green */
+      transform: translateY(0);
+    }
+
+    a:focus {
+      outline: 2px solid #2cb5e8;
+      outline-offset: 2px;
+    }
+
+    /* Form element states */
+    input:focus {
+      border-color: #2cb5e8;
+      box-shadow: 0 0 0 3px rgba(44, 181, 232, 0.15);
+    }
+
+    input:hover {
+      border-color: #6c757d;
+    }
+
+    input:invalid {
+      border-color: #dc3545;
+      background-color: #f8d7da;
+    }
+
+    input:valid {
+      border-color: #28a745;
+      background-color: #d1eddd;
+    }
+
+    input:required {
+      box-shadow: inset 0 0 5px rgba(255, 111, 145, 0.3); /* pink glow */
+    }
+
+    input:optional {
+      box-shadow: inset 0 0 5px rgba(32, 201, 151, 0.2);
+    }
+
+    input:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      background-color: #e9ecef;
+    }
+
+    input:enabled {
+      cursor: text;
+    }
+
+    input:checked + label {
+      font-weight: bold;
+      color: #2cb5e8;
+    }
+
+    input:indeterminate {
+      opacity: 0.7;
+    }
+
+    /* Button states */
+    button:hover {
+      background-color: #2cb5e8;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* === Structural Pseudo-classes === */
+    li:first-child {
+      font-weight: bold;
+      color: #2cb5e8;
+    }
+
+    li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    li:only-child {
+      text-align: center;
+      font-style: italic;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #f8f9fa;
+    }
+
+    tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+
+    li:nth-child(3n) {
+      color: #dc3545;
+    }
+
+    li:nth-child(3n+1) {
+      color: #20c997; /* cyan-green */
+    }
+
+    li:nth-child(3n+2) {
+      color: #2cb5e8;
+    }
+
+    li:nth-child(n+3) {
+      margin-top: 10px;
+    }
+
+    li:nth-child(-n+3) {
+      font-weight: bold;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+      font-size: 2em;
+    }
+
+    h2:last-of-type {
+      margin-bottom: 0;
+    }
+
+    p:nth-of-type(2) {
+      font-style: italic;
+      color: #6f42c1;
+    }
+
+    img:only-of-type {
+      display: block;
+      margin: 0 auto;
+    }
+
+    p:empty {
+      display: none;
+    }
+
+    div:not(.special) {
+      color: #6c757d;
+    }
+
+    input:not([type="hidden"]) {
+      margin-bottom: 10px;
+    }
+
+    /* Root & Target */
+    :root {
+      --primary-color: #2cb5e8;
+    }
+
+    :target {
+      background-color: #fff3cd;
+      padding: 20px;
+      border-left: 4px solid #ffc107;
+    }
+
+    /* Responsive tweak */
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Enceladus CSS Pseudo-Classes</h1>
+    <p>Experiment by <strong>Swaranthi</strong></p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#form">Form Demo</a></li>
+      <li><a href="#list">Styled List</a></li>
+      <li><a href="#table">Table Rows</a></li>
+      <li><a href="#footer">Footer</a></li>
+    </ul>
+  </nav>
+
+  <!-- Form Section -->
+  <section id="form">
+    <h2>Form States</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required><br>
+      <input type="email" placeholder="swaranthi@enceladus.com"><br>
+      <input type="checkbox" id="subscribe" checked>
+      <label for="subscribe">Subscribe to newsletter</label><br>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- List Section -->
+  <section id="list">
+    <h2>Styled List</h2>
+    <ul>
+      <li>Tech Gadgets</li>
+      <li>AI Tools</li>
+      <li>Smart Devices</li>
+      <li>Software Solutions</li>
+      <li>Cloud Services</li>
+    </ul>
+  </section>
+
+  <!-- Table Section -->
+  <section id="table">
+    <h2>Table Rows Styling</h2>
+    <table border="1" cellpadding="5">
+      <tr><td>Product</td><td>Category</td></tr>
+      <tr><td>Laptop</td><td>Hardware</td></tr>
+      <tr><td>Smartphone</td><td>Mobile</td></tr>
+      <tr><td>Cloud Storage</td><td>Software</td></tr>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <p>© 2025 Enceladus | Designed by Swaranthi</p>
+  </footer>
+</body>
+</html>

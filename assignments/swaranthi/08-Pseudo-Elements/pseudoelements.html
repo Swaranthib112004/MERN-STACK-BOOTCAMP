@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enceladus - Pseudo Elements Demo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 20px;
+      background: #fdfdfd;
+      color: #333;
+      counter-reset: section;
+    }
+
+    /* First line and letter */
+    p::first-line {
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #008c9e; /* cyan blue */
+    }
+
+    p::first-letter {
+      font-size: 3em;
+      font-weight: bold;
+      float: left;
+      margin: 0.1em 0.2em 0.1em 0;
+      color: #ff6fa7; /* light pink */
+      line-height: 0.9;
+    }
+
+    /* Drop cap effect */
+    .drop-cap::first-letter {
+      font-size: 4em;
+      font-family: serif;
+      font-weight: bold;
+      float: left;
+      margin: 0.1em 0.2em 0 0;
+      padding: 0.15em;
+      background: linear-gradient(45deg, #00b894, #74b9ff); /* cyan green + cyan blue */
+      color: white;
+      border-radius: 6px;
+    }
+
+    /* Quotes */
+    .quote {
+      position: relative;
+      margin: 20px;
+      padding-left: 1.5em;
+      font-style: italic;
+    }
+
+    .quote::before {
+      content: "❝";
+      font-size: 2em;
+      color: #74b9ff;
+      position: absolute;
+      left: -0.5em;
+      top: -0.2em;
+    }
+
+    .quote::after {
+      content: "❞";
+      font-size: 2em;
+      color: #74b9ff;
+      position: absolute;
+      right: -0.5em;
+      bottom: -0.3em;
+    }
+
+    /* Icon additions */
+    .external-link::after {
+      content: " ↗";
+      font-size: 0.8em;
+      color: #6c757d;
+    }
+
+    .required-field::after {
+      content: " *";
+      color: #e84393; /* pink-red */
+      font-weight: bold;
+    }
+
+    .email::before {
+      content: "✉ ";
+      color: #00cec9;
+    }
+
+    .phone::before {
+      content: "☎ ";
+      color: #0984e3;
+    }
+
+    /* Section Counter */
+    h2::before {
+      counter-increment: section;
+      content: "Section " counter(section) ": ";
+      color: #00b894;
+      font-weight: bold;
+    }
+
+    /* Tooltip */
+    .tooltip {
+      position: relative;
+      cursor: pointer;
+      color: #0984e3;
+      border-bottom: 1px dotted #0984e3;
+    }
+
+    .tooltip::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      font-size: 0.85em;
+    }
+
+    .tooltip::before {
+      content: "";
+      position: absolute;
+      bottom: 115%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #333;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .tooltip:hover::after,
+    .tooltip:hover::before {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Custom List */
+    ul.custom-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.custom-list li::before {
+      content: "✓ ";
+      color: #00b894;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    ol.fancy-list {
+      list-style: none;
+      counter-reset: fancy-counter;
+    }
+
+    ol.fancy-list li::before {
+      counter-increment: fancy-counter;
+      content: counter(fancy-counter);
+      background: #74b9ff;
+      color: white;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 50%;
+      margin-right: 10px;
+      font-size: 0.8em;
+    }
+
+    /* Selection */
+    ::selection {
+      background: #ff9ff3;
+      color: white;
+    }
+    ::-moz-selection {
+      background: #ff9ff3;
+      color: white;
+    }
+
+    /* Input placeholders */
+    input::placeholder {
+      color: #6c757d;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    input[type="file"]::file-selector-button {
+      background: #ff6fa7;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #74b9ff;
+      border-radius: 6px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0984e3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Enceladus</h1>
+  <p class="drop-cap">Hello, my name is <strong>Swaranthi</strong>. This is a styled demo page showing how pseudo-elements can be used beautifully with light colors.</p>
+
+  <h2>Pseudo Elements in Action</h2>
+  <p class="quote">Design is not just what it looks like and feels like. Design is how it works.</p>
+
+  <p class="tooltip" data-tooltip="This is a tooltip example!">Hover here for tooltip</p>
+
+  <h2>Custom Lists</h2>
+  <ul class="custom-list">
+    <li>Styled with checkmarks</li>
+    <li>Uses cyan green accents</li>
+    <li>Aesthetic list look</li>
+  </ul>
+
+  <ol class="fancy-list">
+    <li>First item</li>
+    <li>Second item</li>
+    <li>Third item</li>
+  </ol>
+
+  <h2>Form Example</h2>
+  <form>
+    <label class="required-field">Name</label><br>
+    <input type="text" placeholder="Enter your name"><br><br>
+
+    <label class="email">Email</label><br>
+    <input type="email" placeholder="Enter your email"><br><br>
+
+    <label class="phone">Phone</label><br>
+    <input type="tel" placeholder="Enter your number"><br><br>
+
+    <label>Upload File</label><br>
+    <input type="file"><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
