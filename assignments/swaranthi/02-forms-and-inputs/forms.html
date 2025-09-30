@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enceladus - Forms & Inputs</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff0f5; /* light pink background */
+    color: #333;
+    padding: 20px;
+  }
+  form {
+    max-width: 700px;
+    margin: auto;
+    background-color: #e0ffff; /* light cyan blue */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  fieldset {
+    border: 2px solid #7fffd4; /* cyan green border */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+  }
+  legend {
+    font-weight: bold;
+    color: #ff69b4; /* pink */
+  }
+  label {
+    display: block;
+    margin: 10px 0 5px;
+  }
+  input, select, textarea, output, button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #7fffd4; /* cyan green */
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  button:hover {
+    background-color: #00ced1; /* cyan blue */
+    color: #fff;
+  }
+  @media (max-width: 600px) {
+    body {
+      padding: 10px;
+    }
+    input, select, textarea, button {
+      width: 100%;
+    }
+  }
+  #result {
+    max-width: 700px;
+    margin: 20px auto;
+    background-color: #f0fff0;
+    border: 2px solid #90ee90;
+    border-radius: 10px;
+    padding: 15px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Enceladus - Personal Forms by Swaranthi</h1>
+
+<form id="personalForm" novalidate>
+  <fieldset>
+    <legend>Personal Information</legend>
+    <label for="fullname">Full Name*</label>
+    <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name" autocomplete="name">
+    
+    <label for="email">Email Address*</label>
+    <input type="email" id="email" name="email" required placeholder="user@enceladus.com" autocomplete="email">
+    
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" autocomplete="tel">
+    
+    <label for="website">Website</label>
+    <input type="url" id="website" name="website" placeholder="https://enceladus.com">
+  </fieldset>
+
+  <fieldset>
+    <legend>Additional Details</legend>
+    <label for="birthdate">Birth Date</label>
+    <input type="date" id="birthdate" name="birthdate" min="1900-01-01" max="2025-12-31">
+    
+    <label for="appointment">Appointment Time</label>
+    <input type="datetime-local" id="appointment" name="appointment">
+    
+    <label for="meeting-time">Meeting Time</label>
+    <input type="time" id="meeting-time" name="meeting-time">
+    
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" min="18" max="120" step="1">
+    
+    <label for="salary">Expected Salary Range</label>
+    <input type="range" id="salary" name="salary" min="30000" max="150000" step="5000" value="75000" oninput="salaryOutput.value = '$' + this.value.replace(/\B(?=(\d{3})+(?!\d))/g, ',')">
+    <output id="salaryOutput">$75,000</output>
+    
+    <label for="theme-color">Preferred Theme Color</label>
+    <input type="color" id="theme-color" name="theme-color" value="#ffb6c1"> 
+    
+    <label for="resume">Resume (PDF only)</label>
+    <input type="file" id="resume" name="resume" accept=".pdf">
+    
+    <label for="portfolio">Portfolio Images</label>
+    <input type="file" id="portfolio" name="portfolio" accept="image/*" multiple>
+    
+    <label for="search">Search Query</label>
+    <input type="search" id="search" name="search" placeholder="Search our Enceladus database...">
+    
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" minlength="8" required>
+    
+    <input type="hidden" name="form-id" value="contact-form">
+  </fieldset>
+
+  <fieldset>
+    <legend>Preferences</legend>
+    <label for="country">Country</label>
+    <select id="country" name="country" required>
+      <option value="">Choose a country</option>
+      <optgroup label="North America">
+        <option value="us">United States</option>
+        <option value="ca">Canada</option>
+      </optgroup>
+      <optgroup label="Europe">
+        <option value="uk">United Kingdom</option>
+        <option value="de">Germany</option>
+      </optgroup>
+      <option value="in">India</option>
+    </select>
+
+    <label for="skills">Skills (Hold Ctrl to select multiple)</label>
+    <select id="skills" name="skills" multiple size="4">
+      <option value="html">HTML</option>
+      <option value="css">CSS</option>
+      <option value="js">JavaScript</option>
+      <option value="python">Python</option>
+    </select>
+
+    <label for="bio">Biography</label>
+    <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Tell us about yourself..." maxlength="500"></textarea>
+
+    <fieldset>
+      <legend>Newsletter Frequency</legend>
+      <input type="radio" id="daily" name="newsletter" value="daily">
+      <label for="daily">Daily</label>
+      <input type="radio" id="weekly" name="newsletter" value="weekly" checked>
+      <label for="weekly">Weekly</label>
+      <input type="radio" id="monthly" name="newsletter" value="monthly">
+      <label for="monthly">Monthly</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Interests</legend>
+      <input type="checkbox" id="webdev" name="interests" value="web-development">
+      <label for="webdev">Web Development</label>
+      <input type="checkbox" id="design" name="interests" value="design">
+      <label for="design">Design</label>
+      <input type="checkbox" id="marketing" name="interests" value="marketing">
+      <label for="marketing">Marketing</label>
+    </fieldset>
+
+    <input type="checkbox" id="terms" name="terms" required>
+    <label for="terms">I agree to the Terms and Conditions*</label>
+
+    <input type="checkbox" id="newsletter-signup" name="newsletter-signup">
+    <label for="newsletter-signup">Subscribe to our newsletter</label>
+  </fieldset>
+
+  <button type="submit">Submit Form</button>
+  <button type="reset">Reset Form</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+const form = document.getElementById('personalForm');
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // prevent page refresh
+
+  const data = new FormData(form);
+  let output = '<h2>Form Submitted Successfully!</h2><ul>';
+  
+  data.forEach((value, key) => {
+    if(key === "resume" || key === "portfolio") {
+      if(value.name) output += `<li>${key}: ${value.name}</li>`;
+    } else {
+      output += `<li>${key}: ${value}</li>`;
+    }
+  });
+  output += '</ul>';
+
+  document.getElementById('result').innerHTML = output;
+});
+</script>
+
+</body>
+</html>
