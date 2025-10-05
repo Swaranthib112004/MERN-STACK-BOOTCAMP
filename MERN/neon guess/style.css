@@ -1,0 +1,480 @@
+/* 🎨 NEON GUESS - style.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    background: #0a0a0a;
+    color: white;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* 🔷 Background Grid */
+.bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 0, 110, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 🧩 Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.top-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* 🎚 Difficulty Selector */
+.difficulty-selector {
+    display: flex;
+    gap: 15px;
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(20px);
+    padding: 10px;
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.difficulty-btn {
+    padding: 12px 28px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: white;
+    text-transform: uppercase;
+}
+
+.difficulty-btn:hover {
+    border-color: #00f5ff;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+.difficulty-btn.active {
+    background: linear-gradient(135deg, #ff006e, #00f5ff);
+    border-color: white;
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.6);
+}
+
+/* 🕹 Game Card */
+.game-card {
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(30px);
+    border-radius: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+/* 🌈 Header */
+.header {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.2), rgba(0, 245, 255, 0.2));
+    padding: 50px 40px;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.header h1 {
+    font-size: 3.5em;
+    font-weight: 900;
+    background: linear-gradient(135deg, #ff006e, #00f5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+}
+
+.header p {
+    font-size: 1.3em;
+    color: #ffb3d9;
+}
+
+/* 📊 Stats Dashboard */
+.stats-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+    padding: 40px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.stat-card {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(0, 245, 255, 0.1));
+    backdrop-filter: blur(20px);
+    padding: 30px 25px;
+    border-radius: 25px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    border-color: #00f5ff;
+    box-shadow: 0 15px 50px rgba(0, 245, 255, 0.3);
+}
+
+.stat-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+
+.stat-label {
+    font-size: 0.9em;
+    color: #ffb3d9;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.stat-value {
+    font-size: 2.5em;
+    font-weight: 700;
+    background: linear-gradient(135deg, white, #00f5ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 🎯 Game Section */
+.game-section {
+    padding: 50px 40px;
+}
+
+/* Progress */
+.progress-container {
+    margin-bottom: 40px;
+}
+
+.progress-label {
+    color: white;
+    font-size: 1em;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.progress-label span:last-child {
+    color: #00f5ff;
+}
+
+.progress-bar {
+    height: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff006e, #00f5ff);
+    border-radius: 20px;
+    transition: width 0.5s ease;
+    width: 0%;
+}
+
+/* Input */
+.input-container {
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 25px;
+    font-size: 1.8em;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    outline: none;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.input-wrapper input::placeholder {
+    color: rgba(255, 179, 217, 0.5);
+}
+
+.input-wrapper input:focus {
+    border-color: #00f5ff;
+    box-shadow: 0 0 40px rgba(0, 245, 255, 0.5);
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    flex: 1;
+    min-width: 150px;
+    padding: 22px 35px;
+    font-size: 1.2em;
+    font-weight: 700;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ff006e, #00f5ff);
+    border-color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 245, 255, 0.5);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #b967ff, #ffb3d9);
+    border-color: white;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #00ff88, #00f5ff);
+    border-color: white;
+}
+
+.btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Result Display */
+.result-display {
+    min-height: 120px;
+    margin: 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-message {
+    padding: 30px 50px;
+    border-radius: 25px;
+    font-size: 1.6em;
+    font-weight: 700;
+    text-align: center;
+    max-width: 700px;
+    border: 3px solid;
+    backdrop-filter: blur(20px);
+}
+
+.result-high {
+    background: rgba(255, 0, 110, 0.2);
+    border-color: #ff006e;
+    color: #ffb3d9;
+}
+
+.result-low {
+    background: rgba(0, 245, 255, 0.2);
+    border-color: #00f5ff;
+    color: #00f5ff;
+}
+
+.result-correct {
+    background: rgba(0, 255, 136, 0.2);
+    border-color: #00ff88;
+    color: #00ff88;
+}
+
+/* 💡 Hints */
+.hints-section {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.05), rgba(0, 245, 255, 0.05));
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.hints-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.hints-count {
+    background: linear-gradient(135deg, #ff006e, #b967ff);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 0.95em;
+    font-weight: 700;
+}
+
+.hint-display {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 15px;
+    color: #ffb3d9;
+    font-size: 1.1em;
+    text-align: center;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 🏆 Achievements */
+.achievements {
+    display: flex;
+    gap: 20px;
+    padding: 30px 40px;
+    background: rgba(0, 0, 0, 0.3);
+    overflow-x: auto;
+}
+
+.achievement-badge {
+    min-width: 140px;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(0, 245, 255, 0.1));
+    border-radius: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.achievement-badge.unlocked {
+    border-color: #00f5ff;
+    box-shadow: 0 0 40px rgba(0, 245, 255, 0.5);
+}
+
+.achievement-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    filter: grayscale(100%) brightness(0.3);
+}
+
+.achievement-badge.unlocked .achievement-icon {
+    filter: grayscale(0%) brightness(1);
+}
+
+.achievement-name {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.95em;
+    font-weight: 700;
+}
+
+.achievement-badge.unlocked .achievement-name {
+    color: white;
+}
+
+/* 📋 Log Section */
+.log-section {
+    padding: 40px;
+}
+
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.log-title {
+    color: white;
+    font-size: 2em;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.log-controls {
+    display: flex;
+    gap: 15px;
+}
+
+.log-filter,
+.export-btn {
+    padding: 12px 25px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95em;
+    font-weight: 600;
+}
+
+.table-container {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    overflow: hidden;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.3), rgba(0, 245, 255, 0.3));
+    position: sticky;
+    top: 0;
+}
+
+th, td {
+    padding: 20px;
+    color: white;
+}
+
+tbody tr:hover {
+    background: linear-gradient(135deg, rgba(255, 0, 110, 0.1), rgba(0, 245, 255, 0.1));
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.5em;
+    }
+    .button-group {
+        flex-direction: column;
+    }
+    .btn {
+        min-width: 100%;
+    }
+}
