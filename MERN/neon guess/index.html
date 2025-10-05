@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Guess Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <div class="container">
+        <div class="top-controls">
+            <div class="difficulty-selector">
+                <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+                <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+                <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+            </div>
+        </div>
+
+        <div class="game-card">
+            <div class="header">
+                <h1>🎯 NEON GUESS</h1>
+                <p>Enter the Matrix of Numbers</p>
+            </div>
+
+            <div class="stats-dashboard">
+                <div class="stat-card">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-label">Time</div>
+                    <div class="stat-value" id="timer">00:00</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-label">Attempts</div>
+                    <div class="stat-value" id="attempts">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-label">Score</div>
+                    <div class="stat-value" id="score">1000</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-label">Streak</div>
+                    <div class="stat-value" id="streak">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-label">Best</div>
+                    <div class="stat-value" id="bestScore">0</div>
+                </div>
+            </div>
+
+            <div class="game-section">
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Range Narrowed</span>
+                        <span id="rangeInfo">1 - 50</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <input type="number" id="guessInput" placeholder="Enter your guess" min="1" max="50">
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-primary" id="guessBtn">🎯 GUESS</button>
+                        <button class="btn btn-secondary" id="hintBtn">💡 HINT</button>
+                        <button class="btn btn-success" id="restartBtn" style="display: none;">🔄 RESTART</button>
+                    </div>
+                </div>
+
+                <div class="result-display" id="resultDisplay"></div>
+
+                <div class="hints-section">
+                    <div class="hints-header">
+                        <h3>💡 SMART HINTS</h3>
+                        <span class="hints-count" id="hintsCount">3 remaining</span>
+                    </div>
+                    <div class="hint-display" id="hintDisplay">Use hints wisely! Each costs 50 points.</div>
+                </div>
+            </div>
+
+            <div class="achievements">
+                <div class="achievement-badge" data-achievement="first-win">
+                    <div class="achievement-icon">🎉</div>
+                    <div class="achievement-name">First Win</div>
+                </div>
+                <div class="achievement-badge" data-achievement="perfect">
+                    <div class="achievement-icon">💎</div>
+                    <div class="achievement-name">Perfect</div>
+                </div>
+                <div class="achievement-badge" data-achievement="speed">
+                    <div class="achievement-icon">⚡</div>
+                    <div class="achievement-name">Speed</div>
+                </div>
+                <div class="achievement-badge" data-achievement="streak">
+                    <div class="achievement-icon">🔥</div>
+                    <div class="achievement-name">Streak</div>
+                </div>
+                <div class="achievement-badge" data-achievement="master">
+                    <div class="achievement-icon">👑</div>
+                    <div class="achievement-name">Master</div>
+                </div>
+            </div>
+
+            <div class="log-section">
+                <div class="log-header">
+                    <div class="log-title">
+                        📋 LOGS
+                        <span class="hints-count" id="logCount">0 attempts</span>
+                    </div>
+                    <div class="log-controls">
+                        <select class="log-filter" id="logFilter">
+                            <option value="all">All</option>
+                            <option value="high">High</option>
+                            <option value="low">Low</option>
+                            <option value="correct">Correct</option>
+                        </select>
+                        <button class="export-btn" id="exportBtn">📥 EXPORT</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Guess</th>
+                                <th>Result</th>
+                                <th>Hint</th>
+                                <th>Time</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logTableBody">
+                            <tr>
+                                <td colspan="6" class="log-empty">🎮 Start guessing to see logs!</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
