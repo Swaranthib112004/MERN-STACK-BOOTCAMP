@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virtual Cat Pet</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <h1>Virtual Cat Buddy</h1>
+
+    <section id="pet-area" class="card">
+      <div class="pet">
+        <img id="petImage" src="images/idle.png" alt="Cat">
+      </div>
+    </section>
+
+    <section class="controls card">
+      <div class="buttons">
+        <button id="feedBtn" class="btn">Feed 🍖</button>
+        <button id="playBtn" class="btn">Play 🎾</button>
+        <button id="sleepBtn" class="btn">Sleep 😴</button>
+        <button id="resetBtn" class="btn secondary">Reset ↺</button>
+      </div>
+      <div class="stats-grid" id="statsGrid">
+        <!-- Stats will appear here -->
+      </div>
+    </section>
+
+    <section class="log card" id="logCard">
+      <h2>Activity Log</h2>
+      <div id="logList" class="log-list"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
